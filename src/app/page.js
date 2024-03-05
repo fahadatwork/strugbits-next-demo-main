@@ -1,12 +1,14 @@
 import Table from "@/components/table";
 import { LuUsers } from "react-icons/lu";
-import AddEditForm from "@/components/addeditform";
+import AddForm from "@/components/addfrom";
 import { Modal } from "@/components/Modal";
 import Link from "next/link";
 import { PrismaClient } from "@prisma/client";
-//import Deleteitem from "./actions/deleteCustomer";
 import ConfirmDelete from "@/components/confirm-delte";
 import Delete from "@/components/delete";
+import EditForm from "@/components/editform";
+import { getServerSession } from "next-auth/next";
+import { redirect } from "next/dist/server/api-utils";
 
 export default async function Home({ searchParams }) {
   const prisma = new PrismaClient();
@@ -18,21 +20,20 @@ export default async function Home({ searchParams }) {
 
   const customers = await prisma.customer.findMany();
 
-
-  return (
+return (
     <>
       {customerModal && (
         <Modal>
           <div className="p-6">
-            <AddEditForm />
+            <AddForm />
           </div>
         </Modal>
       )}
 
-      {customerModalEdit && customer_id &&(
+      {customerModalEdit && (
         <Modal edit={true}>
           <div className="p-6">
-            <AddEditForm edit={true} customer_id={customer_id} />
+            <EditForm customer_id={customer_id} />
           </div>
         </Modal>
       )}
@@ -78,4 +79,7 @@ export default async function Home({ searchParams }) {
       </div>
     </>
   );
+
 }
+
+

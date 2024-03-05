@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from 'next/navigation'
 import { handleFileUpload } from "@/functions/fileHandlers";;
 
-export default async function AddEditForm({ edit, customer_id }) {
+export default async function EditForm({ customer_id }) {
  
 
  const prisma = new PrismaClient();
@@ -48,21 +48,21 @@ async function EditSingleCustomer(formData){
 
   return (
     <>
-      <form action={edit ? EditSingleCustomer : AddCustomers}>
+      <form action={EditSingleCustomer}>
         <div className="flex flex-col gap-2 rounded-md">
           <label className="text-md text-gray-500" htmlFor="fullname">Full Name</label>
           <input
             className="w-full h-[50px] bg-slate-50 border boreder-blue-200 rounded-md border-gray-500"
             type="text"
             name="fullname"
-            placeholder={edit && customer && customer.name}
+            placeholder={customer && customer.name}
           />
           <label className="text-md text-gray-500" htmlFor="email">Email</label>
           <input
             className="w-full h-[50px] bg-slate-50 border boreder-blue-200 rounded-md border-gray-500"
             type="email"
             name="email"
-            placeholder={edit && customer && customer.email}
+            placeholder={customer && customer.email}
           />
           <label className="text-md text-gray-500" htmlFor="photo">Select Photo</label>
           <input
