@@ -27,10 +27,10 @@ const Customer = ({ photo, name, email, id }) => {
           <span className="text-gray-500">{email}</span>
         </div>
         <div className="mt-[30px] space-x-1 flex flex-row">
-          <Link href={`/?editCust=true&customer_id=${id}`}>
+          <Link href={`/home?editCust=true&customer_id=${id}`}>
             <p className="w-[60px] h-[20px] rounded-md text-white text-sm bg-green-300 hover:bg-green-400 text-center">Edit</p>
           </Link>
-          <Link href={`/?del=true&customer_id=${id}`} className="w-[60px] h-[20px] rounded-md text-white text-sm bg-red-300 hover:bg-red-400">
+          <Link href={`/home?del=true&customer_id=${id}`} className="w-[60px] h-[20px] rounded-md text-white text-sm bg-red-300 hover:bg-red-400">
           <p className="w-[60px] h-[20px] rounded-md text-white text-sm bg-red-300 hover:bg-red-400 text-center">Delete</p>
           </Link> 
         </div>

@@ -64,7 +64,7 @@ return (
           </h1>
 
           <Link
-            href="/?addCust=true"
+            href="/home?addCust=true"
             className="mx-[20px] mt-[85px] w-[120px] h-[50px] bg-slate-400 hover:bg-slate-600 rounded-md"
           >
             <p className="text-center mt-[10px] text-white">Add Customer</p>
