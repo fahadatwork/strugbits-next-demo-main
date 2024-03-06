@@ -8,6 +8,9 @@ import ConfirmDelete from "@/components/confirm-delte";
 import Delete from "@/components/delete";
 import EditForm from "@/components/editform";
 
+import { auth } from "auth";
+import { redirect } from "next/navigation";
+
 export default async function Home({ searchParams }) {
   const prisma = new PrismaClient();
 
@@ -17,8 +20,9 @@ export default async function Home({ searchParams }) {
   const customer_id = searchParams.customer_id
 
   const customers = await prisma.customer.findMany();
+  const session = await auth();
 
-return (
+ if(session && session.user) return (
     <>
       {customerModal && (
         <Modal>
@@ -76,7 +80,9 @@ return (
         </div>
       </div>
     </>
-  );
+  ) 
+
+  if(!session) return redirect('/api/auth/signin')
 
 }
 
