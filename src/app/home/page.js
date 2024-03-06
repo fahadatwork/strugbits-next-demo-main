@@ -7,8 +7,6 @@ import { PrismaClient } from "@prisma/client";
 import ConfirmDelete from "@/components/confirm-delte";
 import Delete from "@/components/delete";
 import EditForm from "@/components/editform";
-import { getServerSession } from "next-auth/next";
-import { redirect } from "next/dist/server/api-utils";
 
 export default async function Home({ searchParams }) {
   const prisma = new PrismaClient();
